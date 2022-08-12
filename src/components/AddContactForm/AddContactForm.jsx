@@ -34,7 +34,6 @@ export default function AddContactForm() {
       remove();
       return;
     } else if (contactName.trim() === '' || contactNumber.trim() === '') {
-      console.log('please enter your contact');
       return;
     }
     const contact = {
@@ -52,15 +51,15 @@ export default function AddContactForm() {
   };
 
   return (
-    <form action="">
+    <form action="" onSubmit={handleSubmitForm}>
       <input
         type="text"
         name="name"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-        required
         value={contactName}
         onChange={handleInputChange}
+        required
       />
       <input
         type="tel"
@@ -71,9 +70,7 @@ export default function AddContactForm() {
         value={contactNumber}
         onChange={handleInputChange}
       />
-      <button type="submit" onClick={handleSubmitForm}>
-        Submit
-      </button>
+      <button type="submit">Submit</button>
     </form>
   );
 }
